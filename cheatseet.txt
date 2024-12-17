@@ -1,0 +1,70 @@
+--------- TRANSFERENCIA DE DATOS -------------------
+MOV dest, src	Mover datos de src a dest
+PUSH val	Apilar un valor en la pila
+POP dest	Desapilar un valor en dest
+XCHG a, b	Intercambiar los valores de a y b
+LEA dest, src	Cargar la dirección efectiva de src
+
+---------- Aritmética -------------------------------
+Instrucción	Descripción
+ADD dest, src	Sumar src a dest
+SUB dest, src	Restar src de dest
+INC reg	Incrementar reg en 1
+DEC reg	Decrementar reg en 1
+MUL src	Multiplicar AX por src (sin signo)
+IMUL src	Multiplicar AX por src (con signo)
+DIV src	Dividir DX:AX entre src (sin signo)
+IDIV src	Dividir DX:AX entre src (con signo)
+NEG reg	Cambiar el signo de reg
+
+----------- REGISTROS -----------------------------
+Registro	Uso General
+EAX	Acumulador (operaciones aritméticas)
+EBX	Base (índice para operaciones)
+ECX	Contador (loops y repeticiones)
+EDX	Datos (operaciones de E/S)
+ESI	Índice fuente (cadenas/memoria)
+EDI	Índice destino (cadenas/memoria)
+ESP	Puntero de pila (Stack Pointer)
+EBP	Puntero base de pila (Base Pointer)
+
+------ Lógica y Bitwise -------------------
+AND dest, src	AND lógico entre dest y src
+OR dest, src	OR lógico entre dest y src
+XOR dest, src	XOR lógico entre dest y src
+NOT dest	Negación bit a bit de dest
+SHL dest, n	Desplazar dest a la izquierda n bits
+SHR dest, n	Desplazar dest a la derecha n bits
+
+------- Control de Flujo ---------------------
+JMP label	Salto incondicional a label
+JE label	Salto si igual (ZF = 1)
+JNE label	Salto si no igual (ZF = 0)
+JG label	Salto si mayor (ZF = 0 y SF = OF)
+JL label	Salto si menor (SF ≠ OF)
+CALL label	Llamar a subrutina
+RET	Retornar de subrutina
+CMP a, b	Comparar a con b
+
+-------- Cadenas ------------------------------
+MOVSB	Mover byte de DS:ESI a ES:EDI
+MOVSW	Mover word de DS:ESI a ES:EDI
+MOVSD	Mover double word de DS:ESI a ES:EDI
+CMPSB	Comparar bytes (DS:ESI con ES:EDI)
+SCASB	Comparar byte en AL con ES:EDI
+LODSB	Cargar byte desde DS:ESI a AL
+STOSB	Almacenar byte desde AL en ES:EDI
+
+------- Modos de Direccionamiento ---------------
+Inmediato	MOV EAX, 10	Valor directo
+Registro	MOV EBX, EAX	Transferencia entre registros
+Directo	MOV EAX, [var]	Accede al contenido de una dirección
+Indirecto	MOV EAX, [EBX]	Accede a la dirección contenida en un registro
+Base + Desplazo	MOV EAX, [EBX+4]	Dirección con registro base y desplazamiento
+
+------- Syscalls ---------------------------------
+1	sys_exit	Termina el programa
+3	sys_read	Lee desde un descriptor de archivo
+4	sys_write	Escribe en un descriptor
+5	sys_open	Abre un archivo
+6	sys_close	Cierra un archivo
